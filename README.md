@@ -56,6 +56,8 @@ trail-pal/
 ├── index.html   # Page structure, navigation and calculator inputs/results
 ├── styles.css   # Mobile-first layout, styling and responsive rules
 ├── app.js       # Tab navigation, input validation and calculations
+├── favicon.ico  # Multi-resolution browser tab icon
+├── favicon.png  # High-resolution icon source
 └── README.md    # Project documentation
 ```
 
