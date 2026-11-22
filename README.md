@@ -72,10 +72,11 @@ trail-pal/
 ├── sw.js                       # Caches the app shell and provides offline fallback
 ├── manifest.webmanifest        # PWA name, icons, colours and launch settings
 ├── favicon.ico                 # Multi-resolution browser tab icon
-├── favicon.png                 # High-resolution favicon source
+├── favicon.png                 # High-resolution favicon
 ├── icons/
 │   ├── icon-192.png            # PWA install icon (192 × 192)
 │   ├── icon-512.png            # PWA install icon (512 × 512)
+│   ├── icon-maskable-512.png   # Android adaptive/maskable icon
 │   └── apple-touch-icon.png    # iOS home-screen icon (180 × 180)
 └── README.md                   # Project documentation
 ```
@@ -95,7 +96,7 @@ All calculations happen locally in the browser. Trail Pal does not send entered 
 The service worker cache is named near the top of `sw.js`:
 
 ```javascript
-const CACHE_NAME = 'trail-pal-v1';
+const CACHE_NAME = 'trail-pal';
 ```
 
 When you make a change that requires a new pre-cached app shell or want to force old cached resources to be discarded, increment the version (for example, `trail-pal-v2`). The activation handler removes older Trail Pal caches automatically. The service worker also checks the network first, so updated files are normally picked up on a connected visit.
@@ -121,3 +122,8 @@ Trail Pal is a static website and can be hosted by any static web hosting provid
 ## Disclaimer
 
 The figures are estimates intended for personal training reference. Actual vertical gain can vary depending on treadmill calibration, incline behaviour and the stair stepper's definition of a floor.
+
+
+### Refreshing an installed app icon
+
+Browsers and phone launchers can retain an installed web app's icon separately from the website cache. When changing the app artwork, update the icon filenames in `manifest.webmanifest` and the HTML icon links, then increment the service-worker cache version. After deployment, remove the old Trail Pal shortcut/app from the device and install it again from the updated website if the old artwork remains.

@@ -1,5 +1,7 @@
 /* Trail Pal service worker: caches the app shell for offline use. */
-const CACHE_NAME = 'trail-pal-v1';
+// Increment this when changing the app shell or its icons. This version also
+// removes the previous cache, which may contain the old placeholder artwork.
+const CACHE_NAME = 'trail-pal';
 const APP_SHELL = [
   './index.html',
   './styles.css',
@@ -9,6 +11,7 @@ const APP_SHELL = [
   './favicon.png',
   './icons/icon-192.png',
   './icons/icon-512.png',
+  './icons/icon-maskable-512.png',
   './icons/apple-touch-icon.png'
 ];
 
