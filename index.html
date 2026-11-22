@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Trail Pal: simple tools for tracking your training elevation gain.">
+  <meta name="theme-color" content="#f4f6f1">
+  <title>Trail Pal — little tools for big climbs</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="brand-icon" aria-hidden="true">⛰️</div>
+      <div>
+        <p class="eyebrow">Your little training toolkit</p>
+        <h1>Trail Pal</h1>
+        <p class="tagline">Your pocket-sized partner in uphill crime.</p>
+      </div>
+    </header>
+
+    <main>
+      <nav class="tabs" role="tablist" aria-label="Choose an elevation calculator">
+        <button
+          class="tab"
+          id="treadmill-tab"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="treadmill-panel"
+          tabindex="0"
+        >
+          <span aria-hidden="true">🏃</span> Treadmill
+        </button>
+        <button
+          class="tab"
+          id="stairs-tab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="stairs-panel"
+          tabindex="-1"
+        >
+          <span aria-hidden="true">🪜</span> Stair stepper
+        </button>
+      </nav>
+
+      <section
+        class="tool-panel"
+        id="treadmill-panel"
+        role="tabpanel"
+        aria-labelledby="treadmill-tab"
+        tabindex="0"
+      >
+        <div class="panel-heading">
+          <p class="eyebrow">Tool 01</p>
+          <h2>Treadmill elevation</h2>
+          <p>Turn your incline session into metres climbed.</p>
+        </div>
+
+        <div class="calculator-fields" id="treadmill-fields">
+          <div class="field-grid">
+            <div class="field">
+              <label for="incline-level">Incline level</label>
+              <select id="incline-level" name="incline" required>
+                <option value="" selected disabled>Choose incline</option>
+                <option value="1">1%</option>
+                <option value="2">2%</option>
+                <option value="3">3%</option>
+                <option value="4">4%</option>
+                <option value="5">5%</option>
+                <option value="6">6%</option>
+                <option value="7">7%</option>
+                <option value="8">8%</option>
+                <option value="9">9%</option>
+                <option value="10">10%</option>
+                <option value="11">11%</option>
+                <option value="12">12%</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="distance-km">Distance (km)</label>
+              <input
+                id="distance-km"
+                name="distance"
+                type="number"
+                inputmode="decimal"
+                min="0.01"
+                step="any"
+                placeholder="e.g. 10.5"
+              >
+              <p class="field-hint">Decimals are fine, e.g. 4.5 km.</p>
+            </div>
+          </div>
+
+          <p class="error-message" id="treadmill-error" role="alert" hidden></p>
+        </div>
+
+        <div class="result-card" aria-live="polite" aria-atomic="true">
+          <p class="result-label">Estimated elevation gain</p>
+          <output class="result-value" id="treadmill-result">—</output>
+          <p class="result-note" id="treadmill-note">Enter your incline and distance to see your climb.</p>
+        </div>
+        <p class="calculation-note">Estimate: distance in metres × incline percentage. For example, 10 km at 5% is approximately 500 m.</p>
+      </section>
+
+      <section
+        class="tool-panel"
+        id="stairs-panel"
+        role="tabpanel"
+        aria-labelledby="stairs-tab"
+        tabindex="0"
+        hidden
+      >
+        <div class="panel-heading">
+          <p class="eyebrow">Tool 02</p>
+          <h2>Stair stepper elevation</h2>
+          <p>Every floor counts. See how high you've climbed.</p>
+        </div>
+
+        <div class="calculator-fields" id="stairs-fields">
+          <div class="field">
+            <label for="floor-count">Number of floors</label>
+            <input
+              id="floor-count"
+              name="floors"
+              type="number"
+              inputmode="numeric"
+              min="0"
+              step="1"
+              placeholder="e.g. 30"
+            >
+            <p class="field-hint">Whole numbers only. One floor = 3.25 metres.</p>
+          </div>
+
+          <p class="error-message" id="stairs-error" role="alert" hidden></p>
+        </div>
+
+        <div class="result-card" aria-live="polite" aria-atomic="true">
+          <p class="result-label">Estimated elevation gain</p>
+          <output class="result-value" id="stairs-result">—</output>
+          <p class="result-note" id="stairs-note">Enter your floors to see your climb.</p>
+        </div>
+        <p class="calculation-note">Based on 3.25 metres of elevation per floor.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Small tools for big climbs. Keep moving.</p>
+    </footer>
+  </div>
+</body>
+</html>
